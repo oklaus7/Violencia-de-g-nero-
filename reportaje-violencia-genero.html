@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cada 7,6 Días — Violencia de Género en España</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #1a1209;
+    --paper: #f5f0e8;
+    --accent: #b5172b;
+    --accent-light: #e8c4c8;
+    --warm-gray: #8a7f74;
+    --rule: #d4c9bc;
+    --highlight: #f0c84a;
+    --col-width: 680px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* ── HEADER ── */
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2rem 2rem 0;
+    text-align: center;
+    border-bottom: 4px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(255,255,255,0.03) 28px,
+      rgba(255,255,255,0.03) 29px
+    );
+    pointer-events: none;
+  }
+  .kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1.0;
+    color: #fff;
+    margin-bottom: 0.6rem;
+    position: relative;
+  }
+  .headline em {
+    color: var(--highlight);
+    font-style: italic;
+  }
+  .subhead {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #c8bfb0;
+    max-width: 600px;
+    margin: 0 auto 1.8rem;
+    font-style: italic;
+  }
+  .byline-bar {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding: 0.8rem 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: #7a7060;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .byline-bar span { color: #aaa39a; }
+
+  /* ── LAYOUT ── */
+  .article-body {
+    max-width: var(--col-width);
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  p {
+    margin-bottom: 1.4rem;
+    font-weight: 300;
+  }
+  p:first-of-type::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2rem;
+    line-height: 0.85;
+    float: left;
+    margin-right: 0.1em;
+    margin-top: 0.08em;
+    color: var(--accent);
+    font-weight: 900;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-light);
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+  a:hover { color: #7a0f1e; text-decoration-color: var(--accent); }
+
+  .section-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2.5rem 0;
+  }
+
+  .pull-quote {
+    border-left: 4px solid var(--accent);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--accent);
+    background: rgba(181,23,43,0.04);
+    line-height: 1.5;
+  }
+
+  /* ── MULTIMEDIA LABEL ── */
+  .multimedia-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    border-top: 2px solid var(--accent);
+    padding-top: 0.4rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .multimedia-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ══════════════════════════════
+     PIEZA 1 — INFOGRAFÍA INTERACTIVA
+  ══════════════════════════════ */
+  .infografia {
+    margin: 2.5rem -1.5rem;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .infografia::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(181,23,43,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .infografia h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.3rem;
+  }
+  .infografia .subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: #7a7060;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    padding: 1.2rem 1rem;
+    cursor: pointer;
+    transition: background 0.25s, border-color 0.25s, transform 0.2s;
+    position: relative;
+  }
+  .stat-card:hover, .stat-card.active {
+    background: rgba(181,23,43,0.2);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .stat-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: var(--highlight);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-card .num.small { font-size: 1.8rem; }
+  .stat-card .desc {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.78rem;
+    color: #c8bfb0;
+    line-height: 1.4;
+  }
+  .stat-card .source {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    color: #5a544c;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .tooltip-box {
+    background: rgba(181,23,43,0.95);
+    color: #fff;
+    padding: 1rem 1.2rem;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    border-radius: 2px;
+    margin-top: 1rem;
+    display: none;
+    border-left: 3px solid var(--highlight);
+    animation: fadeSlide 0.25s ease;
+  }
+  .tooltip-box.visible { display: block; }
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .tooltip-box .tip-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: var(--highlight);
+  }
+
+  .infografia-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: #4a4440;
+    letter-spacing: 0.08em;
+    margin-top: 1rem;
+    text-align: right;
+  }
+
+  /* ══════════════════════════════
+     PIEZA 2 — GRÁFICO DE BARRAS
+  ══════════════════════════════ */
+  .grafico-wrap {
+    margin: 2.5rem -1.5rem;
+    background: #fdf8f0;
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 2.2rem 2rem 1.8rem;
+  }
+  .grafico-wrap h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  .grafico-wrap .subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--warm-gray);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+  }
+
+  .chart-container {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  .bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    min-width: 380px;
+  }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .bar-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--warm-gray);
+    min-width: 36px;
+    text-align: right;
+  }
+  .bar-track {
+    flex: 1;
+    height: 22px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 1px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 1px;
+    position: relative;
+    transition: width 1.2s cubic-bezier(0.16,1,0.3,1);
+    width: 0;
+  }
+  .bar-fill.animate { width: var(--target-w); }
+  .bar-fill.peak { background: var(--accent); }
+  .bar-fill.normal { background: #8a6a6e; }
+  .bar-fill.low { background: #c4a8ab; }
+  .bar-fill.record { background: #3a7a4a; }
+  .bar-value {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--ink);
+    min-width: 24px;
+    font-weight: 500;
+  }
+  .bar-row.highlight .bar-year { color: var(--ink); font-weight: 500; }
+
+  .chart-legend {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    margin-top: 1.2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--warm-gray);
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+  .grafico-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    color: #b0a898;
+    margin-top: 1.2rem;
+    line-height: 1.5;
+  }
+
+  /* ══════════════════════════════
+     PIEZA 3 — LÍNEA DE TIEMPO
+  ══════════════════════════════ */
+  .timeline-wrap {
+    margin: 2.5rem -1.5rem;
+    padding: 2.2rem 2rem;
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+  }
+  .timeline-wrap h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+  .timeline-wrap .subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: #6a6058;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.6rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent) 0%, rgba(181,23,43,0.1) 100%);
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .tl-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .tl-dot {
+    position: absolute;
+    left: -2.5rem;
+    top: 0.2rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--ink);
+    box-shadow: 0 0 0 2px var(--accent);
+    transition: box-shadow 0.3s;
+  }
+  .tl-item:hover .tl-dot {
+    box-shadow: 0 0 0 4px rgba(181,23,43,0.4);
+  }
+  .tl-dot.key {
+    background: var(--highlight);
+    box-shadow: 0 0 0 2px var(--highlight);
+    width: 18px;
+    height: 18px;
+    left: -2.65rem;
+  }
+  .tl-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.15rem;
+  }
+  .tl-item .tl-dot.key ~ * .tl-year { color: var(--highlight); }
+  .tl-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+  .tl-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.83rem;
+    color: #a09888;
+    line-height: 1.55;
+    font-weight: 300;
+  }
+  .tl-text a { color: var(--accent-light); }
+  .tl-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.5rem;
+    border-radius: 2px;
+    margin-bottom: 0.3rem;
+  }
+  .tl-tag.legal { background: rgba(181,23,43,0.25); color: var(--accent-light); }
+  .tl-tag.social { background: rgba(240,200,74,0.15); color: var(--highlight); }
+  .tl-tag.data { background: rgba(255,255,255,0.08); color: #7a7060; }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    border-top: 3px double var(--rule);
+    max-width: var(--col-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+  }
+  .sources-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 1rem;
+  }
+  .sources-list {
+    list-style: none;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.78rem;
+    color: var(--warm-gray);
+    line-height: 1.6;
+  }
+  .sources-list li { padding: 0.2rem 0; border-bottom: 1px solid var(--rule); }
+  .sources-list li:last-child { border-bottom: none; }
+  .sources-list a { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .headline { font-size: 2.4rem; }
+    .infografia, .grafico-wrap, .timeline-wrap { margin: 2rem 0; border-radius: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── CABECERA ── -->
+<header class="masthead">
+  <div class="kicker">Reportaje Multimedia · Violencia de Género</div>
+  <h1 class="headline">Cada <em>7,6 días</em><br>una mujer</h1>
+  <p class="subhead">El tiempo que tarda España en registrar un feminicidio. Dos décadas de datos, leyes y una herida que no cierra.</p>
+  <div class="byline-bar">
+    <span>Reportaje elaborado con fuentes oficiales</span>
+    <span>ONU Mujeres · INE · CGPJ · Ministerio de Igualdad</span>
+    <span>Abril 2026</span>
+  </div>
+</header>
+
+<!-- ── TEXTO + PIEZAS ── -->
+<main class="article-body">
+
+  <p>
+    En 2024, <strong>48 mujeres fueron asesinadas en España por sus parejas o exparejas</strong>, la cifra más baja desde que comenzaron a contabilizarse los feminicidios en 2003, según el <a href="https://www.poderjudicial.es/cgpj/es/Poder-Judicial/En-Portada/El-CGPJ-publica-el-informe-de-victimas-mortales-de-violencia-de-genero-y-domestica-en-el-ambito-de-la-pareja-o-expareja-2024" target="_blank" rel="noopener">informe del Consejo General del Poder Judicial</a>. Un asesinato cada 7,6 días. Aunque la tendencia es descendente —en el periodo 2003–2013 la media era de uno cada 5,6 días— el problema dista de estar resuelto. Como consecuencia de esos 48 crímenes, 82 personas quedaron huérfanas, 40 de ellas menores de edad.
+  </p>
+
+  <p>
+    La violencia machista no es, sin embargo, un fenómeno exclusivamente español ni únicamente letal. Según <a href="https://www.unwomen.org/en/articles/facts-and-figures/facts-and-figures-ending-violence-against-women" target="_blank" rel="noopener">ONU Mujeres</a>, <strong>840 millones de mujeres en el mundo</strong> —casi una de cada tres— han sufrido violencia física o sexual de pareja o violencia sexual por terceros al menos una vez en su vida. En 2024, alrededor de 50.000 mujeres y niñas fueron asesinadas globalmente por sus parejas o familiares: una cada diez minutos, los 365 días del año. La <a href="https://www.who.int/es/news-room/fact-sheets/detail/violence-against-women" target="_blank" rel="noopener">Organización Mundial de la Salud</a> califica este fenómeno de <em>pandemia de salud pública y violación sistemática de derechos humanos</em>.
+  </p>
+
+  <!-- ══ PIEZA 1: INFOGRAFÍA INTERACTIVA ══ -->
+  <div class="multimedia-label">▶ Pieza 1 — Infografía interactiva</div>
+  <div class="infografia" role="region" aria-label="Infografía: cifras clave de la violencia de género">
+    <h2>La violencia en cifras</h2>
+    <p class="subtitle">Haz clic sobre cada dato para ampliar el contexto · Fuentes: ONU Mujeres, OMS, INE, CGPJ, CEPAL</p>
+
+    <div class="stat-grid" id="statGrid">
+      <div class="stat-card" data-id="0" tabindex="0" role="button" aria-label="1 de cada 3 mujeres">
+        <div class="num">1/3</div>
+        <div class="desc">mujeres en el mundo ha sufrido violencia física o sexual</div>
+        <div class="source">ONU Mujeres / OMS, 2025</div>
+      </div>
+      <div class="stat-card" data-id="1" tabindex="0" role="button" aria-label="137 mujeres al día">
+        <div class="num">137</div>
+        <div class="desc">mujeres asesinadas cada día por pareja o familiar en el mundo</div>
+        <div class="source">UNODC / ONU Mujeres, 2024</div>
+      </div>
+      <div class="stat-card" data-id="2" tabindex="0" role="button" aria-label="48 feminicidios en España">
+        <div class="num">48</div>
+        <div class="desc">mujeres asesinadas por su pareja o expareja en España (2024)</div>
+        <div class="source">CGPJ, mayo 2025</div>
+      </div>
+      <div class="stat-card" data-id="3" tabindex="0" role="button" aria-label="34.684 víctimas en España">
+        <div class="num small">34.684</div>
+        <div class="desc">mujeres víctimas de violencia de género en España en 2024 (−5,2%)</div>
+        <div class="source">INE, mayo 2025</div>
+      </div>
+      <div class="stat-card" data-id="4" tabindex="0" role="button" aria-label="60% de los feminicidios globales">
+        <div class="num">60%</div>
+        <div class="desc">de los homicidios femeninos son cometidos por pareja o familiar</div>
+        <div class="source">ONU Mujeres, 2024</div>
+      </div>
+      <div class="stat-card" data-id="5" tabindex="0" role="button" aria-label="3.828 femicidios en América Latina">
+        <div class="num small">3.828</div>
+        <div class="desc">femicidios/feminicidios en América Latina y el Caribe en 2024</div>
+        <div class="source">CEPAL / OIG, 2025</div>
+      </div>
+    </div>
+
+    <div class="tooltip-box" id="tooltipBox">
+      <div class="tip-title" id="tipTitle"></div>
+      <div id="tipContent"></div>
+    </div>
+    <div class="infografia-note">Pulsa esc o haz clic fuera para cerrar el detalle · Datos de dominio público</div>
+  </div>
+
+  <p>
+    En España, los datos del <a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176866&menu=ultiDatos&idp=1254735573206" target="_blank" rel="noopener">Instituto Nacional de Estadística</a> muestran que en 2024 el número de mujeres víctimas de violencia de género —no solo los casos mortales— disminuyó un 5,2%, hasta las 34.684. La tasa es de 1,6 víctimas por cada 1.000 mujeres de 14 años en adelante. Sin embargo, los expertos advierten de que la disminución estadística esconde una realidad más compleja: muchos casos nunca se denuncian.
+  </p>
+
+  <div class="pull-quote">
+    "Entre 2003 y 2024, una mujer ha sido víctima mortal de la violencia de género cada 6,2 días en España."<br>
+    <small style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.05em;">— Observatorio contra la Violencia Doméstica y de Género, CGPJ</small>
+  </div>
+
+  <p>
+    La <a href="https://violenciagenero.igualdad.gob.es/violenciaencifras/macroencuesta-de-violencia-contra-la-mujer-2024/" target="_blank" rel="noopener">Macroencuesta de Violencia contra la Mujer 2024</a>, publicada en diciembre de 2025 por la Delegación del Gobierno contra la Violencia de Género, es la operación estadística más exhaustiva sobre el fenómeno en España. Mide formas de violencia que no siempre generan denuncias: psicológica, económica, sexual dentro de la pareja y acoso. La brecha entre los casos registrados oficialmente y los que arroja esta encuesta es, sistemáticamente, enorme.
+  </p>
+
+  <hr class="section-rule">
+
+  <!-- ══ PIEZA 2: GRÁFICO ══ -->
+  <div class="multimedia-label">▶ Pieza 2 — Gráfico: evolución histórica</div>
+  <div class="grafico-wrap" role="region" aria-label="Gráfico de víctimas mortales por violencia de género en España">
+    <h2>Víctimas mortales por violencia de género en España</h2>
+    <p class="subtitle">Mujeres asesinadas por pareja o expareja · 2003–2024 · Fuente: Ministerio de Igualdad / CGPJ</p>
+
+    <div class="chart-container">
+      <div class="bar-chart" id="barChart">
+        <!-- Generado por JS -->
+      </div>
+    </div>
+
+    <div class="chart-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#b5172b"></div>Año de máximo</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#8a6a6e"></div>Años 2005–2018</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#c4a8ab"></div>Tendencia descendente</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#3a7a4a"></div>Mínimo histórico</div>
+    </div>
+    <div class="grafico-note">
+      Nota: Los datos recogen únicamente feminicidios íntimos (pareja o expareja) según el registro oficial del Ministerio de Igualdad, iniciado el 1 de enero de 2003.<br>
+      Fuentes: <a href="https://violenciagenero.igualdad.gob.es/violenciaencifras/victimasmortales/fichamujeres/" target="_blank" rel="noopener">Delegación del Gobierno contra la Violencia de Género</a> · <a href="https://www.poderjudicial.es" target="_blank" rel="noopener">CGPJ</a>
+    </div>
+  </div>
+
+  <p>
+    La serie histórica revela una tendencia a la baja que los organismos atribuyen, entre otros factores, a la <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-21760" target="_blank" rel="noopener">Ley Orgánica 1/2004</a>, pionera en Europa. Pero los datos también son contundentes en otro sentido: desde 2003, más de 1.300 mujeres han sido asesinadas. El <a href="https://www.infobae.com/espana/agencias/2025/05/05/los-feminicidios-en-2024-multiplican-por-12-a-las-mujeres-que-mataron-a-parejas-masculinas/" target="_blank" rel="noopener">informe del CGPJ publicado en mayo de 2025</a> señala que el número de feminicidas fue en 2024 doce veces superior al de mujeres que mataron a sus parejas varones (48 frente a 4), evidenciando la asimetría estructural del fenómeno.
+  </p>
+
+  <p>
+    La dimensión global no resulta más alentadora. La <a href="https://oig.cepal.org/es/infografias/violencia-feminicida-cifras-2025" target="_blank" rel="noopener">CEPAL registró 3.828 femicidios en América Latina y el Caribe en 2024</a>, con una tasa regional de 1,6 por cada 100.000 mujeres. En algunos países de la región, como Honduras, El Salvador o Bolivia, las tasas son entre cinco y diez veces superiores a la española. A escala mundial, el progreso es lentísimo: según ONU Mujeres, el descenso anual de la violencia íntima de pareja ha sido de apenas un <strong>0,2% en dos décadas</strong>.
+  </p>
+
+  <hr class="section-rule">
+
+  <!-- ══ PIEZA 3: LÍNEA DE TIEMPO ══ -->
+  <div class="multimedia-label">▶ Pieza 3 — Línea de tiempo legislativa</div>
+  <div class="timeline-wrap" role="region" aria-label="Línea de tiempo: hitos legislativos contra la violencia de género en España">
+    <h2>Dos décadas de respuesta legislativa</h2>
+    <p class="subtitle">Principales hitos normativos en España · 2003–2026 · Fuentes: BOE, Amnistía Internacional, Amnesty.es</p>
+
+    <div class="timeline" id="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-tag data">Datos</div>
+        <div class="tl-year">2003</div>
+        <div class="tl-title">Inicio del registro oficial de feminicidios</div>
+        <div class="tl-text">España comienza a contabilizar de forma oficial las muertes de mujeres a manos de sus parejas o exparejas. La <a href="https://www.boe.es/buscar/doc.php?id=BOE-A-2003-14650" target="_blank" rel="noopener">Ley 27/2003</a> reguladora de la Orden de Protección entra en vigor, primer instrumento específico de protección inmediata.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot key"></div>
+        <div class="tl-tag legal">Legislación</div>
+        <div class="tl-year">2004</div>
+        <div class="tl-title">Ley Orgánica 1/2004: la primera ley integral de Europa</div>
+        <div class="tl-text">Aprobada el 28 de diciembre por unanimidad parlamentaria, la <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-21760" target="_blank" rel="noopener">LO 1/2004</a> crea los Juzgados de Violencia sobre la Mujer, la figura de la Fiscal especializada y el sistema integral de protección. ONU Mujeres, World Future Council y la UIP la distinguirán en 2014 como una de las leyes más eficaces del mundo.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-tag data">Datos</div>
+        <div class="tl-year">2008</div>
+        <div class="tl-title">Año de máximo histórico: 76 víctimas mortales</div>
+        <div class="tl-text">Es el peor año de la serie histórica con 76 mujeres asesinadas. El dato impulsa el refuerzo de las políticas de protección y el desarrollo del sistema VioGén de seguimiento de casos de riesgo, gestionado por la Guardia Civil y la Policía Nacional.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-tag social">Sociedad</div>
+        <div class="tl-year">2011</div>
+        <div class="tl-title">Convenio de Estambul</div>
+        <div class="tl-text">El <a href="https://rm.coe.int/1680462543" target="_blank" rel="noopener">Convenio del Consejo de Europa</a> sobre prevención y lucha contra la violencia contra las mujeres amplía el marco conceptual más allá de la violencia de pareja: mutilación genital, matrimonio forzado, acoso y violencia sexual. España lo ratifica en 2014.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot key"></div>
+        <div class="tl-tag legal">Legislación</div>
+        <div class="tl-year">2017</div>
+        <div class="tl-title">Pacto de Estado contra la Violencia de Género</div>
+        <div class="tl-text">El Congreso aprueba con amplio consenso un paquete de <a href="https://violenciagenero.igualdad.gob.es/pactoEstado/home.htm" target="_blank" rel="noopener">212 medidas</a> en prevención, educación, asistencia y protección. Incluye el incremento presupuestario y la mejora de la formación de operadores jurídicos. <a href="https://www.es.amnesty.org/en-que-estamos/blog/historia/articulo/violencia-de-genero/" target="_blank" rel="noopener">Amnistía Internacional</a> valora el pacto positivamente, aunque señala déficits en su implementación.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-tag social">Sociedad</div>
+        <div class="tl-year">2018</div>
+        <div class="tl-title">Caso "La Manada" y el movimiento #MeToo en España</div>
+        <div class="tl-text">La sentencia inicial del caso de agresión sexual en los Sanfermines de 2016 —que calificó los hechos de abuso, no de violación— genera una ola de protestas masivas en todo el país. El debate social acelera la reforma del Código Penal en materia de delitos sexuales.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot key"></div>
+        <div class="tl-tag legal">Legislación</div>
+        <div class="tl-year">2022</div>
+        <div class="tl-title">Ley Orgánica 10/2022: "Solo sí es sí"</div>
+        <div class="tl-text">La <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2022-14630" target="_blank" rel="noopener">Ley de Garantía Integral de la Libertad Sexual</a> coloca el consentimiento en el centro del delito y crea Centros de Crisis 24/7. Su aplicación genera controversia judicial al producirse reducciones de condena, lo que obliga a una posterior reforma del articulado.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-tag data">Datos</div>
+        <div class="tl-year">2024</div>
+        <div class="tl-title">Mínimo histórico: 48 víctimas mortales</div>
+        <div class="tl-text">El <a href="https://www.poderjudicial.es/cgpj/es/Poder-Judicial/En-Portada/" target="_blank" rel="noopener">CGPJ</a> confirma el menor número de feminicidios desde 2003. Sin embargo, como consecuencia de los 48 crímenes, 82 personas quedan huérfanas, 40 de ellas menores de edad. El 83% de las víctimas eran madres.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot key"></div>
+        <div class="tl-tag legal">Legislación</div>
+        <div class="tl-year">2025–2026</div>
+        <div class="tl-title">Renovación del Pacto de Estado y nuevos retos</div>
+        <div class="tl-text">En febrero de 2025, el presidente Pedro Sánchez anuncia el compromiso de renovar el Pacto de Estado. Los desafíos pendientes incluyen la violencia digital, la violencia vicaria —ejercida contra los hijos para dañar a la madre— y la mejora de la atención a víctimas en zonas rurales. El marco legal se considera robusto; la implementación, insuficiente.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <p>
+    España ha construido en veinte años uno de los marcos legales más avanzados del mundo en la materia. La creación de los Juzgados de Violencia sobre la Mujer, el sistema de seguimiento de riesgo VioGén o la atención jurídica gratuita garantizada por la <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-21760" target="_blank" rel="noopener">LO 1/2004</a> son logros concretos. Pero la brecha entre legislación y realidad sigue siendo profunda. <a href="https://www.es.amnesty.org/en-que-estamos/blog/historia/articulo/violencia-de-genero/" target="_blank" rel="noopener">Amnistía Internacional</a> recuerda que muchas de las 212 medidas del Pacto de Estado de 2017 siguen sin implementarse plenamente.
+  </p>
+
+  <p>
+    La <a href="https://violenciagenero.igualdad.gob.es/violenciaencifras/macroencuesta-de-violencia-contra-la-mujer-2024/" target="_blank" rel="noopener">Macroencuesta 2024</a> y los datos del <a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176866&menu=ultiDatos&idp=1254735573206" target="_blank" rel="noopener">INE</a> apuntan a una realidad que las cifras de feminicidios solo rozan en la superficie: la violencia psicológica, el control económico, el acoso digital y la violencia vicaria —usar a los hijos como arma contra la madre— siguen siendo formas difusas de un mismo fenómeno estructural. Mientras persista la desigualdad que lo alimenta, ninguna estadística a la baja será suficiente para declarar cerrada la herida.
+  </p>
+
+</main>
+
+<!-- ── FUENTES ── -->
+<footer class="article-footer">
+  <div class="sources-title">Fuentes consultadas</div>
+  <ul class="sources-list">
+    <li><a href="https://www.unwomen.org/en/articles/facts-and-figures/facts-and-figures-ending-violence-against-women" target="_blank" rel="noopener">ONU Mujeres — Datos y cifras: violencia contra las mujeres (2025)</a></li>
+    <li><a href="https://www.who.int/es/news-room/fact-sheets/detail/violence-against-women" target="_blank" rel="noopener">Organización Mundial de la Salud — Violencia contra la mujer (2024)</a></li>
+    <li><a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176866&menu=ultiDatos&idp=1254735573206" target="_blank" rel="noopener">INE — Estadística de Violencia Doméstica y de Género. Año 2024 (mayo 2025)</a></li>
+    <li><a href="https://violenciagenero.igualdad.gob.es/violenciaencifras/victimasmortales/fichamujeres/" target="_blank" rel="noopener">Ministerio de Igualdad — Fichas de víctimas mortales por violencia de género (2003–2026)</a></li>
+    <li><a href="https://violenciagenero.igualdad.gob.es/violenciaencifras/macroencuesta-de-violencia-contra-la-mujer-2024/" target="_blank" rel="noopener">Delegación del Gobierno — Macroencuesta de Violencia contra la Mujer 2024 (dic. 2025)</a></li>
+    <li><a href="https://www.infobae.com/espana/agencias/2025/05/05/los-feminicidios-en-2024-multiplican-por-12-a-las-mujeres-que-mataron-a-parejas-masculinas/" target="_blank" rel="noopener">CGPJ / EFE — Informe de víctimas mortales violencia de género y doméstica 2024 (mayo 2025)</a></li>
+    <li><a href="https://oig.cepal.org/es/infografias/violencia-feminicida-cifras-2025" target="_blank" rel="noopener">CEPAL / Observatorio de Igualdad de Género — Violencia feminicida en cifras 2025</a></li>
+    <li><a href="https://www.es.amnesty.org/en-que-estamos/blog/historia/articulo/violencia-de-genero/" target="_blank" rel="noopener">Amnistía Internacional España — Violencia de género en España: historia y leyes (feb. 2026)</a></li>
+    <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-21760" target="_blank" rel="noopener">BOE — Ley Orgánica 1/2004 de Medidas de Protección Integral contra la Violencia de Género</a></li>
+    <li><a href="https://ayudaenaccion.org/blog/mujer/violencia-genero-cifras/" target="_blank" rel="noopener">Ayuda en Acción — Cifras y datos de violencia de género en el mundo (nov. 2025)</a></li>
+  </ul>
+</footer>
+
+<!-- ══ SCRIPTS ══ -->
+<script>
+// ── DATOS DEL GRÁFICO (Fuente: Ministerio de Igualdad / CGPJ) ──
+const chartData = [
+  { year: '2003', val: 71 }, { year: '2004', val: 72 }, { year: '2005', val: 57 },
+  { year: '2006', val: 69 }, { year: '2007', val: 71 }, { year: '2008', val: 76 },
+  { year: '2009', val: 56 }, { year: '2010', val: 73 }, { year: '2011', val: 61 },
+  { year: '2012', val: 52 }, { year: '2013', val: 54 }, { year: '2014', val: 54 },
+  { year: '2015', val: 60 }, { year: '2016', val: 49 }, { year: '2017', val: 51 },
+  { year: '2018', val: 47 }, { year: '2019', val: 55 }, { year: '2020', val: 47 },
+  { year: '2021', val: 43 }, { year: '2022', val: 49 }, { year: '2023', val: 57 },
+  { year: '2024', val: 48 },
+];
+const maxVal = Math.max(...chartData.map(d => d.val));
+const minVal = Math.min(...chartData.map(d => d.val));
+
+const barChart = document.getElementById('barChart');
+chartData.forEach(d => {
+  const pct = (d.val / maxVal * 100).toFixed(1);
+  let cls = d.val === maxVal ? 'peak' : d.val === minVal ? 'record' : d.val >= 65 ? 'normal' : d.val >= 55 ? 'normal' : 'low';
+  if (d.val >= 65) cls = 'normal';
+  if (d.year === '2008') cls = 'peak';
+  if (d.year === '2021') cls = 'record';
+  const isHighlight = d.year === '2008' || d.year === '2021' || d.year === '2024';
+  barChart.innerHTML += `
+    <div class="bar-row${isHighlight ? ' highlight' : ''}">
+      <div class="bar-year">${d.year}</div>
+      <div class="bar-track">
+        <div class="bar-fill ${cls}" style="--target-w:${pct}%"></div>
+      </div>
+      <div class="bar-value">${d.val}</div>
+    </div>`;
+});
+
+// Animar barras al entrar en viewport
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      document.querySelectorAll('.bar-fill').forEach((bar, i) => {
+        setTimeout(() => bar.classList.add('animate'), i * 35);
+      });
+      barObserver.disconnect();
+    }
+  });
+}, { threshold: 0.2 });
+barObserver.observe(document.getElementById('barChart'));
+
+// ── INFOGRAFÍA INTERACTIVA ──
+const tips = [
+  { title: "1 de cada 3 mujeres", text: "Según la OMS y ONU Mujeres, aproximadamente 840 millones de mujeres —el 30% de las mayores de 15 años— han experimentado violencia física o sexual de pareja o violencia sexual por terceros. Esta cifra no ha variado significativamente en dos décadas, con una reducción anual de apenas el 0,2%." },
+  { title: "137 mujeres al día", text: "En 2024, unas 50.000 mujeres y niñas fueron asesinadas por sus parejas o familiares en todo el mundo, según UNODC y ONU Mujeres. Eso equivale a una muerte cada 10 minutos. El 60% de todos los homicidios femeninos intencionados son cometidos en el entorno familiar o de pareja." },
+  { title: "48 feminicidios en España (2024)", text: "Es la cifra más baja desde que comenzó el registro en 2003. El informe del CGPJ (mayo 2025) señala que el número de feminicidas fue 12 veces superior al de mujeres que mataron a sus parejas (48 vs 4). Como consecuencia de estos crímenes, 82 personas quedaron huérfanas, 40 de ellas menores." },
+  { title: "34.684 víctimas en España", text: "El INE registró en 2024 un total de 34.684 mujeres víctimas de violencia de género, un 5,2% menos que el año anterior. La tasa es de 1,6 por cada 1.000 mujeres de 14 y más años. Estos datos incluyen no solo los casos más graves sino también denuncias por violencia psicológica, control y amenazas." },
+  { title: "60% de los homicidios femeninos", text: "Solo el 11% de los homicidios masculinos son perpetrados en el ámbito privado, frente al 60% en el caso de las mujeres. Esta asimetría estructural subraya que la violencia contra las mujeres responde a patrones de control y dominación que no tienen equivalencia en la violencia masculina." },
+  { title: "3.828 femicidios en América Latina", text: "La CEPAL registró 3.828 femicidios/feminicidios en 26 países de América Latina y el Caribe en 2024, con una tasa regional de 1,6 por cada 100.000 mujeres. En algunos países como Honduras o El Salvador las tasas son 5-10 veces superiores a la española. En AL, 1 de cada 4 niñas se casa antes de los 18 años." },
+];
+
+const cards = document.querySelectorAll('.stat-card');
+const box = document.getElementById('tooltipBox');
+const tipTitle = document.getElementById('tipTitle');
+const tipContent = document.getElementById('tipContent');
+
+function showTip(id) {
+  cards.forEach(c => c.classList.remove('active'));
+  cards[id].classList.add('active');
+  tipTitle.textContent = tips[id].title;
+  tipContent.textContent = tips[id].text;
+  box.classList.add('visible');
+}
+function hideTip() {
+  cards.forEach(c => c.classList.remove('active'));
+  box.classList.remove('visible');
+}
+
+cards.forEach((card, i) => {
+  card.addEventListener('click', () => {
+    if (card.classList.contains('active')) { hideTip(); return; }
+    showTip(i);
+  });
+  card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showTip(i); } });
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') hideTip(); });
+
+// ── LÍNEA DE TIEMPO: animar al scroll ──
+const tlItems = document.querySelectorAll('.tl-item');
+const tlObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+tlItems.forEach((item, i) => {
+  item.style.transitionDelay = (i * 0.06) + 's';
+  tlObserver.observe(item);
+});
+</script>
+</body>
+</html>
